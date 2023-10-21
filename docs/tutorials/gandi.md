@@ -12,7 +12,7 @@ Create a new DNS zone where you want to create your records in. Let's use `examp
 
 Generate an API key on [your account](https://account.gandi.net) (click on "Security").
 
-The environment variable `GANDI_KEY` will be needed to run ExternalDNS with Gandi.
+The environment variable `GANDI_TOKEN` will be needed to run ExternalDNS with Gandi.
 
 ## Deploy ExternalDNS
 
@@ -45,8 +45,8 @@ spec:
         - --domain-filter=example.com # (optional) limit to only example.com domains; change to match the zone created above.
         - --provider=gandi
         env:
-        - name: GANDI_KEY
-          value: "YOUR_GANDI_API_KEY"
+        - name: GANDI_TOKEN
+          value: "YOUR_GANDI_PERSONAL_ACCESS_TOKEN"
 ```
 
 ### Manifest (for clusters with RBAC enabled)
@@ -109,8 +109,8 @@ spec:
         - --domain-filter=example.com # (optional) limit to only example.com domains; change to match the zone created above.
         - --provider=gandi
         env:
-        - name: GANDI_KEY
-          value: "YOUR_GANDI_API_KEY"
+        - name: GANDI_TOKEN
+          value: "YOUR_GANDI_PERSONAL_ACCESS_TOKEN"
 ```
 
 

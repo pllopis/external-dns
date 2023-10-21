@@ -52,14 +52,14 @@ type GandiProvider struct {
 }
 
 func NewGandiProvider(ctx context.Context, domainFilter endpoint.DomainFilter, dryRun bool) (*GandiProvider, error) {
-	key, ok := os.LookupEnv("GANDI_KEY")
+	token, ok := os.LookupEnv("GANDI_TOKEN")
 	if !ok {
-		return nil, errors.New("no environment variable GANDI_KEY provided")
+		return nil, errors.New("no environment variable GANDI_TOKEN provided")
 	}
 	sharingID, _ := os.LookupEnv("GANDI_SHARING_ID")
 
 	g := config.Config{
-		APIKey:    key,
+		Token:     token,
 		SharingID: sharingID,
 		Debug:     false,
 		// dry-run doesn't work but it won't hurt passing the flag

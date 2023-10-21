@@ -155,7 +155,7 @@ func (m *mockGandiClient) ListDomains() (domains []domain.ListResponse, err erro
 // Tests
 
 func TestNewGandiProvider(t *testing.T) {
-	_ = os.Setenv("GANDI_KEY", "myGandiKey")
+	_ = os.Setenv("GANDI_TOKEN", "myGandiKey")
 	provider, err := NewGandiProvider(context.Background(), endpoint.NewDomainFilter([]string{"example.com"}), true)
 	if err != nil {
 		t.Errorf("failed : %s", err)
@@ -169,7 +169,7 @@ func TestNewGandiProvider(t *testing.T) {
 	}
 	assert.Equal(t, false, provider.DryRun)
 
-	_ = os.Unsetenv("GANDI_KEY")
+	_ = os.Unsetenv("GANDI_TOKEN")
 	_, err = NewGandiProvider(context.Background(), endpoint.NewDomainFilter([]string{"example.com"}), true)
 	if err == nil {
 		t.Errorf("expected to fail")
